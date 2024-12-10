@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruitkha - About</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+
+<!-- cycle section start -->
+<div class="cycle_section layout_padding">
+        <div class="container">
+            <h1 class="cycle_taital">Our Best Bicycles</h1>
+            <div class="cycle_section_2 layout_padding">
+                <div th:each="product : ${products}" class="row">
+                    <div class="col-md-6">
+                        <div class="box_main">
+                            <h6 th:text="${product.id}" class="number_text">01</h6>
+                            <div class="image_2"><img th:src="${product.potoUrl}"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 th:text="${product.name}" class="cycles_text">Cycles</h1>
+                        <p th:text="${product.description}" class="lorem_text"></p>
+                        <div class="btn_main">
+                            <!-- Form ekleyerek ürünü sepete ekleme ve yönlendirme işlemi -->
+                            <form method="post" action="/cart">
+                                <!-- Ürünün id'sini form ile gönderiyoruz -->
+                                <input type="hidden" name="productId" th:value="${product.id}" />
+                                <!-- Varsayılan olarak 1 adet eklemek için -->
+                                <input type="hidden" name="quantity" value="1" />
+                                <!-- Sepete ekle butonu -->
+                                <button type="submit" class="buy_bt">Buy Now</button>
+                            </form>
+                            <h4 class="price_text"> Qiymet <span style="color: #325662"
+                                                                 th:text="':' + ${product.price} + ' ₼'">200</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="read_btn_main">
+            <div class="read_bt"><a href="#">Read More</a></div>
+        </div>
+    </div>
+<!-- cycle section end -->
+
+<!-- about section start -->
+<div class="about_section layout_padding">
+    <div class="container">
+        <h1 class="about_taital">About Our cycle Store</h1>
+        <p class="about_text">Welcome to OOycle, your one-stop destination for all things cycling! Whether you're a
+            seasoned cyclist or just starting your journey, we are here to provide you with top-quality bikes,
+            accessories, and expert advice. Our passion for cycling drives us to offer products from the most
+            trusted brands, ensuring you have a smooth and enjoyable ride. At OOycle, customer satisfaction is our
+            top priority, and we strive to create a welcoming atmosphere for all cycling enthusiasts. Explore our
+            extensive range and let us help you find the perfect gear for your next adventure
+        </p>
+        <div class="about_main">
+            <img src="/assets/images/img-5.png" class="image_5">
+        </div>
+        <div class="read_bt_1"><a href="/news">Read More</a></div>
+    </div>
+</div>
+<!-- about section end -->
+
+<!-- client section start -->
+<div class="client_section layout_padding">
+    <div id="my_slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <h1 class="client_taital">Says Customers</h1>
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="client_main">
+                        <div th:each="testimonial:${testimonials}" class="client_section_2">
+                            <div class="client_left">
+                                <div ><img th:src="${testimonial.image}" class="client_img"></div>
+                            </div>
+                            <div class="client_right">
+                                <div class="quote_icon"><img src="/assets/images/quote-icon.png"></div>
+                                <p th:text="${testimonial.description}" class="client_text">It is a long established fact that a reader will be
+                                    distracted by the readable content of a page when looking at its layout. The
+                                    point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+                                    letters</p>
+                                <h3 th:text="${testimonial.userName}" class="client_name">Channery</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- client section end -->
+
+<!-- news section start -->
+<div class="news_section layout_padding">
+    <div class="container">
+        <h1 class="news_taital">News</h1>
+        <p class="news_text">It is a long established fact that a reader will be distracted by the readable content
+            of a page when looking at its layout. The point of using </p>
+        <div class="news_section_2 layout_padding">
+            <div class="row">
+                <div th:each="news:${newsData}" class="col-sm-4">
+                    <div class="box_main_1">
+                        <div class="zoomout frame"><img th:src="${news.photoUrl}"></div>
+                        <div class="padding_15">
+                            <h2 th:text="${news.title}" class="speed_text">Speed cycle</h2>
+                            <div th:text="${news.username}" class="post_text">Post by : Den</div>
+                            <div class="post_text"><span th:text="${news.date}" style="float: right;">20-12-2019</span>
+                                </div>
+
+                            <p th:text="${news.description}" class="long_text">It is a long established fact that a
+                                reader will be distracted by
+                                the readable content of a page when looking at its layout. The point of using </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- news section end -->
+
+<!-- contact section start -->
+<div class="contact_section layout_padding">
+    <div class="container">
+        <div class="contact_main">
+            <h1 class="request_text">A Call Back</h1>
+            <!--                <form method="post" action="/contact">-->
+            <!--                    <div class="form-group">-->
+            <!--                        <input type="text" name="name" class="email-bt" placeholder="Name">-->
+            <!--                    </div>-->
+            <!--                    <div class="form-group">-->
+            <!--                        <input type="text" name="email" class="email-bt" placeholder="Email">-->
+            <!--                    </div>-->
+            <!--                    <div class="form-group">-->
+            <!--                        <input type="text" name="phone" class="email-bt" placeholder="Phone">-->
+            <!--                    </div>-->
+            <!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+            <!--&lt;!&ndash;                        <textarea class="massage-bt" placeholder="Massage" name="massage"></textarea>&ndash;&gt;-->
+            <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+            <!--                    <div class="form-group">-->
+            <!--                        <textarea type="text" name="massage" class="massage-bt" placeholder="Massage" required></textarea>-->
+            <!--                    </div>-->
+            <!--                </form>-->
+            <form method="post" action="/contact">
+                <div class="form-group">
+                    <input type="text" name="name" class="email-bt" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="email-bt" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="phone" class="email-bt" placeholder="Phone" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="massage" class="massage-bt" placeholder="Message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Send" class="btn btn-success"/>
+                </div>
+            </form>
+            <!--                <div class="form-group">-->
+            <!--                    <input type="submit" value="Send" class="btn btn-success"/>-->
+            <!--                </div>-->
+        </div>
+    </div>
+</div>
+<!-- contact section end -->
+</div>
+</div>
+
+</body>
+</html>

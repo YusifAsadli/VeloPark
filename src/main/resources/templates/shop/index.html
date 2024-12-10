@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{/layout}"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruitkha - Shop</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <!-- cycle section start -->
+    <div class="cycle_section layout_padding">
+        <div class="container">
+            <h1 class="cycle_taital">Our cycle</h1>
+            <p class="cycle_text">It is a long established fact that a reader will be distracted by the </p>
+            <div th:each="product:${products.data}" class="cycle_section_2 layout_padding">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="box_main">
+                            <h6 th:text="${product.id}" class="number_text">01</h6>
+                            <div class="image_2"><img th:src="${product.potoUrl}"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 th:text="${product.name}" class="cycles_text">Cycles</h1>
+                        <p th:text="${product.description}" class="lorem_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+                        <div class="btn_main">
+                            <div class="buy_bt"><a href="#">Buy Now</a></div>
+                            <h4 class="price_text">Price <span style=" color: #f7c17b">$</span> <span style=" color: #325662">200</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-start">
+                            <li th:each="page : ${#numbers.sequence(1, 4)}" class="page-item">
+                                <a th:text="${page}" class="page-link" th:href="'?currentPage=' + ${page}"></a>
+                            </li>
+                            <!-- Next button with dynamic href -->
+                            <li th:classappend="${currentPage == pagination} ? 'disabled'" class="page-item">
+                                <a th:href="'?currentPage=' + (${currentPage} + 1)" class="page-link" th:if="${currentPage < pagination}">
+                                    Next
+                                </a>
+                                <span class="page-link" th:if="${currentPage == pagination}">Next</span>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cycle section end -->
+
+
+</section>
+
+
+</body>
+</html>

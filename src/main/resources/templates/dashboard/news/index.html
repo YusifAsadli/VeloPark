@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{/dashboard/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin-News</title>
+</head>
+<body >
+<div layout:fragment="body">
+    <a th:href="@{/admin/news/create}" class="btn btn-outline-success">Create</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">PhotoUrl</th>
+            <th scope="col">Visiable</th>
+            <th scope="col">Date</th>
+            <th scope="col">User</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="news: ${newss}">
+            <th th:text="${news.id}"  scope="row">1</th>
+            <td th:text="${news.title}">Mark</td>
+            <td th:text="${news.description}">Mark</td>
+            <td th:text="${news.photoUrl}">Mark</td>
+            <td th:text="${news.visible}">Mark</td>
+            <td th:text="${news.date}">Mark</td>
+            <td th:text="${news.username}">Mark</td>
+
+
+            <td>
+                <a th:href="'/admin/news/update/'+${news.id}" class="btn btn-outline-warning">update</a>
+                <a th:href="'/admin/news/delete/'+${news.id}" class="btn btn-outline-danger">delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

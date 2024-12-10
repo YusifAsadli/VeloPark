@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{/dashboard/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+<div layout:fragment="body">
+    <a th:href="@{/admin/product/create}" class="btn btn-outline-success">Create</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">PotoUrl</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">CategoryId</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product: ${products}">
+            <th th:text="${product.id}"  scope="row">1</th>
+            <td th:text="${product.name}">Mark</td>
+            <td th:text="${product.description}">Mark</td>
+            <td th:text="${product.price}">Mark</td>
+            <td th:text="${product.potoUrl}">Mark</td>
+            <td th:text="${product.quantity}">Mark</td>
+            <td th:text="${product.category.name}">Mark</td>
+
+
+            <td>
+                <a th:href="'/admin/product/update/'+${product.id}" class="btn btn-outline-warning">update</a>
+                <a th:href="'/admin/product/delete/'+${product.id}" class="btn btn-outline-danger">delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

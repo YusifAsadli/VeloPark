@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{/dashboard/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin_Order</title>
+</head>
+<body >
+<div layout:fragment="body">
+
+    <section><table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">ProductId</th>
+        </tr>
+        </thead>
+        <tbody>
+                    <tr th:each="item : ${orders}">
+                        <th scope="row" th:text="${item.id}">1</th>
+                        <th scope="row" th:text="${item.product.name}">1</th>
+        </tr>
+        </tbody>
+    </table>
+    </section>
+
+</div>
+
+</body>
+</html>

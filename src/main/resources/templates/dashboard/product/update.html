@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{/dashboard/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+<div layout:fragment="body">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="text" name="name" th:value="${product.name}" class="form-control col-4"
+                   placeholder="Name" required/>
+        </div>
+        <div class="form-group">
+            <input type="text" name="description" th:value="${product.description}" class="form-control col-4"
+                   placeholder="Description" required/>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="price" th:value="${product.price}" class="form-control col-4" required/>
+        </div>
+        <div class="form-group">
+            <input type="text" name="potoUrl" th:value="${product.potoUrl}" class="form-control col-4"
+                   placeholder="PhotoUrl" required/>
+        </div>
+        <div class="form-group">
+            <input type="text" name="quantity" th:value="${product.quantity}" class="form-control col-4"
+                   placeholder="Quantity" required/>
+        </div>
+        <td>
+            <div class="form-group">
+                <select name="categoryId" class="form-control col-4">
+                    <option th:text="${category.name}" th:value="${category.id}" th:each="category: ${categories}"></option>
+                </select>
+            </div>
+        </td>
+
+
+
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-success"/>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

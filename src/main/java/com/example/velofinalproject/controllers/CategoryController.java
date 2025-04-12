@@ -37,6 +37,7 @@ public class CategoryController {
         categoryService.createCategory(categoryCreateDto);
         return "redirect:/admin/category";
     }
+
     @GetMapping("/admin/category/update/{id}")
     public String categoryUpgrade(@PathVariable Long id, Model model) {
         CategoryUpdateDto categroy=categoryService.findUpdateCategory(id);

@@ -25,12 +25,12 @@
         <tbody>
         <tr th:each=" order : ${orders}">
             <th scope="row" th:text="${order.id}">1</th>
-            <td th:text="${order.user.name}" >Mark</td>
+            <td th:text="${order.user.name} + ' '+ ${order.user.surname}" >Mark</td>
             <td th:text="${order.phoneNumber}">Otto</td>
             <td th:text="${order.address}" >@mdo</td>
             <td th:text="${order.message}">Otto</td>
                 <td>
-                    <a th:href="'/admin/orders/'+${order.id}" class="btn btn-outline-success">Detail</a>
+                    <a th:href="'/admin/orders/detail/'+${order.id}" class="btn btn-outline-success">Detail</a>
                 </td>
             <td>
                 <select>

@@ -34,6 +34,8 @@
     <link rel="stylesoeet" href="/assets/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 </head>
+
+
 <body>
 
 <!-- header section start -->
@@ -50,9 +52,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cycle">Our Cycle</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/news">News</a>
@@ -136,10 +135,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-12">
-                <div class="call_text"><a href="#"><img src="/assets/images/map-icon.png"><span class="padding_left_0">Af Business House,2-ci Mertebe</span></a></div>
-                <div class="call_text"><a href="#"><img src="/assets/images/call-icon.png"><span class="padding_left_0">Call Now  +994 708740478</span></a></div>
-                <div class="call_text"><a href="#"><img src="/assets/images/mail-icon.png"><span class="padding_left_0">yusif.asadli2003@gmail.com</span></a></div>
+            <div th:each="information : ${informations}" class="col-lg-4 col-sm-12">
+                <div class="call_text"><a href="#"><img src="/assets/images/map-icon.png"><span th:text="${information.location}" class="padding_left_0">Af Business House,2-ci Mertebe</span></a></div>
+                <div class="call_text"><a href="#"><img src="/assets/images/call-icon.png"><span th:text="${information.number}" class="padding_left_0">Call Now  +994 708740478</span></a></div>
+                <div class="call_text"><a href="#"><img src="/assets/images/mail-icon.png"><span th:text="${information.mail}" class="padding_left_0">yusif.asadli2003@gmail.com</span></a></div>
                 <div class="social_icon">
                     <ul>
                         <li><a href="#"><img src="/assets/images/fb-icon1.png"></a></li>
@@ -184,4 +183,5 @@
 </script>
 
 </body>
+
 </html>

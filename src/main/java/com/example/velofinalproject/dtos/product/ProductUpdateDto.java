@@ -1,10 +1,9 @@
 package com.example.velofinalproject.dtos.product;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductUpdateDto {
@@ -15,4 +14,6 @@ public class ProductUpdateDto {
     private String potoUrl;
     private Float quantity;
     private Long categoryId;
+    
+
 }

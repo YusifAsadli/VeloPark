@@ -1,15 +1,9 @@
 package com.example.velofinalproject.controllers;
 
-import com.example.velofinalproject.dtos.category.CategoryCreateDto;
-import com.example.velofinalproject.dtos.category.CategoryDto;
-import com.example.velofinalproject.dtos.category.CategoryUpdateDto;
 import com.example.velofinalproject.dtos.news.NewsCreateDto;
 import com.example.velofinalproject.dtos.news.NewsDto;
-import com.example.velofinalproject.dtos.news.NewsHomeDto;
 import com.example.velofinalproject.dtos.news.NewsUpdateDto;
-import com.example.velofinalproject.dtos.slider.SliderHomeDto;
 import com.example.velofinalproject.services.NewsService;
-import com.example.velofinalproject.services.SliderService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +30,7 @@ public class NewsController {
         model.addAttribute("newss", data);
         return "/dashboard/news/index";
     }
+
     @GetMapping("/admin/news/create")
     public String newsCreate() {
         return "/dashboard/news/create";
@@ -46,17 +41,20 @@ public class NewsController {
         newsService.createNews(newsCreateDto);
         return "redirect:/admin/news";
     }
+
     @GetMapping("/admin/news/update/{id}")
     public String newsUpgrade(@PathVariable Long id, Model model) {
-        NewsUpdateDto news=newsService.findUpdateNews(id);
+        NewsUpdateDto news = newsService.findUpdateNews(id);
         model.addAttribute("news", news);
         return "/dashboard/news/update";
     }
+
     @PostMapping("/admin/news/update/{id}")
     public String newsUpgradeSubmit(@PathVariable Long id, NewsUpdateDto newsUpdateDto) {
         newsService.updateNews(newsUpdateDto, id);
         return "redirect:/admin/news";
     }
+
     @GetMapping("/admin/news/delete/{id}")
     public String newsDelete(@PathVariable Long id) {
         return "/dashboard/news/delete";

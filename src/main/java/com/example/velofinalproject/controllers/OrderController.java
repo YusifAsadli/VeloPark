@@ -24,7 +24,7 @@ public class OrderController {
         model.addAttribute("orders", orders);
         return"/dashboard/orders/index";
     }
-    @GetMapping("/admin/orders/{id}")
+    @GetMapping("/admin/orders/detail/{id}")
     public String detail(Model model, @PathVariable Long id){
         List<OrderDetailDto> order = orderService.getOrderById(id);
         model.addAttribute("orders",order);

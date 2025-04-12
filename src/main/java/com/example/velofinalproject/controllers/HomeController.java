@@ -1,12 +1,12 @@
 package com.example.velofinalproject.controllers;
 
-import com.example.velofinalproject.dtos.contact.ContactAdminDto;
+
 import com.example.velofinalproject.dtos.contact.ContactDto;
+import com.example.velofinalproject.dtos.information.InformationDto;
 import com.example.velofinalproject.dtos.news.NewsHomeDto;
 import com.example.velofinalproject.dtos.product.ProductHomeDto;
 import com.example.velofinalproject.dtos.slider.SliderHomeDto;
 import com.example.velofinalproject.dtos.testimonial.TestimonialDto;
-import com.example.velofinalproject.repositories.TestimonialRepository;
 import com.example.velofinalproject.services.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,13 +23,15 @@ public class HomeController {
     private final NewsService newsService;
     private final ContactService contactService;
     private final TestimonialService testimonialService;
+    private final InformationService informationService;
 
-    public HomeController(ProductService productService, SliderService sliderService, NewsService newsService, ContactService contactService, TestimonialService testimonialService) {
+    public HomeController(ProductService productService, SliderService sliderService, NewsService newsService, ContactService contactService, TestimonialService testimonialService, InformationService informationService) {
         this.productService = productService;
         this.sliderService = sliderService;
         this.newsService = newsService;
         this.contactService = contactService;
         this.testimonialService = testimonialService;
+        this.informationService = informationService;
     }
 
     @GetMapping("/")
@@ -37,7 +39,9 @@ public class HomeController {
         List<TestimonialDto> testimonials=testimonialService.getHomeTestimonial();
         List<ProductHomeDto> products = productService.getHomeProducts();
         List<SliderHomeDto> sliders=sliderService.getSliders();
-        List<NewsHomeDto> newsData=newsService.getNews();
+        List<NewsHomeDto> newsData = newsService.getNews();
+        List<InformationDto> data = informationService.getHomeInformations();
+        model.addAttribute("informations", data);
         model.addAttribute("testimonials", testimonials);
         model.addAttribute("products", products);
         model.addAttribute("sliders", sliders);
